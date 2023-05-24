@@ -1,0 +1,12 @@
+D:\projetos\DotNet7\FindPets\FindPets\Shared\bin\Debug\net7.0\FindPets.Shared.deps.json
+D:\projetos\DotNet7\FindPets\FindPets\Shared\bin\Debug\net7.0\FindPets.Shared.dll
+D:\projetos\DotNet7\FindPets\FindPets\Shared\bin\Debug\net7.0\FindPets.Shared.pdb
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\FindPets.Shared.csproj.AssemblyReference.cache
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\FindPets.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\FindPets.Shared.AssemblyInfoInputs.cache
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\FindPets.Shared.AssemblyInfo.cs
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\FindPets.Shared.csproj.CoreCompileInputs.cache
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\FindPets.Shared.dll
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\refint\FindPets.Shared.dll
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\FindPets.Shared.pdb
+D:\projetos\DotNet7\FindPets\FindPets\Shared\obj\Debug\net7.0\ref\FindPets.Shared.dll
