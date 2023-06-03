@@ -2,6 +2,6 @@
 {
     internal interface IDocument
     {
-       public string Id { get; set; }
+       public Guid Id { get; set; }
     }
 }
