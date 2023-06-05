@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hT9IbySAb4fTZzO+ryYe4DffSZDYwDyUAp3FFCo0YrVgZtm656X34sDseZUsXs26RjVkSNgEfMM79jaZYk9+4A==",
+  "dgSpecHash": "rvdCcz4qF9+9nuQ8ogqCGhXvw/J+u9nCgtJuQ60/2hbOZ6rHDrxiPaNTWrTKkCtQf2NMcyLsIzg5/OuLyjekgw==",
   "success": true,
-  "projectFilePath": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj",
+  "projectFilePath": "c:\\Projects\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

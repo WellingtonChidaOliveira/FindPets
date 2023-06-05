@@ -1,21 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Client\\FindPets.Client.csproj": {}
+    "C:\\Projects\\FindPets\\FindPets\\Client\\FindPets.Client.csproj": {}
   },
   "projects": {
-    "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Client\\FindPets.Client.csproj": {
+    "C:\\Projects\\FindPets\\FindPets\\Client\\FindPets.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Client\\FindPets.Client.csproj",
+        "projectUniqueName": "C:\\Projects\\FindPets\\FindPets\\Client\\FindPets.Client.csproj",
         "projectName": "FindPets.Client",
-        "projectPath": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Client\\FindPets.Client.csproj",
-        "packagesPath": "C:\\Users\\welli\\.nuget\\packages\\",
-        "outputPath": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Client\\obj\\",
+        "projectPath": "C:\\Projects\\FindPets\\FindPets\\Client\\FindPets.Client.csproj",
+        "packagesPath": "C:\\Users\\lucaa\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\FindPets\\FindPets\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\welli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\lucaa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -27,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj": {
-                "projectPath": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj"
+              "c:\\Projects\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj": {
+                "projectPath": "c:\\Projects\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj"
               }
             }
           }
@@ -67,7 +66,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[7.0.2, 7.0.2]"
+              "version": "[7.0.5, 7.0.5]"
             }
           ],
           "frameworkReferences": {
@@ -75,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -84,18 +83,17 @@
         }
       }
     },
-    "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj": {
+    "c:\\Projects\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj",
+        "projectUniqueName": "c:\\Projects\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj",
         "projectName": "FindPets.Shared",
-        "projectPath": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj",
-        "packagesPath": "C:\\Users\\welli\\.nuget\\packages\\",
-        "outputPath": "D:\\projetos\\DotNet7\\FindPets\\FindPets\\Shared\\obj\\",
+        "projectPath": "c:\\Projects\\FindPets\\FindPets\\Shared\\FindPets.Shared.csproj",
+        "packagesPath": "C:\\Users\\lucaa\\.nuget\\packages\\",
+        "outputPath": "c:\\Projects\\FindPets\\FindPets\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\welli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\lucaa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -134,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
