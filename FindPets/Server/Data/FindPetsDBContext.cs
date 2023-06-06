@@ -8,7 +8,7 @@ namespace FindPets.Server.Data
         public FindPetsDBContext(DbContextOptions<FindPetsDBContext> options) : base(options)
         {
         }
-        public DbSet<Pets> Pets { get; set; }
+        public DbSet<Pet> Pets { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }
