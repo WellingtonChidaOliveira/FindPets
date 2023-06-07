@@ -1,0 +1,32 @@
+﻿@using FindPets.Shared;
+
+@if(Pet != null)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="@Pet.ImageUrl" alt="Card image cap">
+        <div class="card-body">
+            @if(Pet.AdType)
+            {
+                <p class="card-title">Desaparecido</p>
+            }
+            else
+            {
+                <p class="card-title">Encontrado</p>
+            }
+            <p class="card-text">@Pet.Description</p>
+        </div>
+      
+        <NavLink href='@("/detailsPet/" + Pet.Id)'>
+            <button class="btn bt-custom-blue card-body" style="width: 100%">
+                Ver Anúncio
+            </button>
+        </NavLink>
+       
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public Pets? Pet { get; set; }
+}
