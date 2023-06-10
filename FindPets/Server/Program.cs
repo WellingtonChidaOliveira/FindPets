@@ -1,6 +1,4 @@
-using FindPets.Server.Data;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.EntityFrameworkCore;
+using FindPets.Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<FindPetsDBContext>(options => options.UseSqlServer("name=ConnectionStrings:FindPetsDBConnection"));
-
-
+builder.Services.AddDbServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -27,13 +23,14 @@ else
     app.UseHsts();
 }
 
+app.ApplyMigrations();
+
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 
 app.MapRazorPages();
 app.MapControllers();

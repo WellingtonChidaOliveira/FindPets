@@ -2,7 +2,7 @@
 
 namespace FindPets.Shared
 {
-    public class Pets : IDocument
+    public class Pet : IDocument
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public bool AdType { get; set; } = false;
@@ -12,7 +12,7 @@ namespace FindPets.Shared
         public string Location { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime ClosedAt { get; set; } = DateTime.Now;
+        public DateTime? ClosedAt { get; set; } = DateTime.Now;
         public bool Status { get; set; } = false;
     }
 }
