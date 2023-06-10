@@ -1,0 +1,43 @@
+﻿@using FindPets.Shared;
+
+<div class="container mt-5">
+    <h4 class="text-center mb-5">Últimos Animais Divulgados</h4>
+    @if(ListPets.Count > 0)
+    {
+        <div class="row">
+            @foreach (var pet in ListPets)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <Card Pet="@pet" />
+                </div>
+            }
+        </div>
+        
+    }
+    <div class="d-flex justify-content-end mt-2">
+        <NavLink href="/searchPets">
+            <button class="btn bt-custom-blue btn-sm" style="height: 32px">Ver Mais</button>
+        </NavLink>
+       
+    </div>
+</div>
+
+
+
+@code {
+    private List<Pets> ListPets = new List<Pets>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Pets pet1 = new Pets();
+        pet1.Id = Guid.NewGuid();
+        pet1.Description = "Visto por último em: Rua xxx, Bairro xxx";
+        pet1.AdType = true;
+        pet1.ImageUrl = "https://th.bing.com/th/id/OIP.gce7cxGw0rKPe9TDdq00ggHaFi?pid=ImgDet&rs=1";
+
+        for (int i = 0; i < 3; i++)
+        {
+            ListPets.Add(pet1);
+        }
+    }
+}
