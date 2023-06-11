@@ -1,4 +1,6 @@
 using FindPets.Server.Extensions;
+using FindPets.Server.Repositories;
+using FindPets.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,8 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
+builder.Services.AddSwaggerGen();
 builder.Services.AddDbServices(builder.Configuration);
+
+// Add dependencies
+
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IPetService, PetService>();
 
 var app = builder.Build();
 
@@ -15,6 +22,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "FindPets API");
+    });
 }
 else
 {
