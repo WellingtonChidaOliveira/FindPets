@@ -25,11 +25,11 @@
 
 
 @code {
-    private List<Pets> ListPets = new List<Pets>();
+    private List<Pet> ListPets = new List<Pet>();
 
     protected override async Task OnInitializedAsync()
     {
-        Pets pet1 = new Pets();
+        Pet pet1 = new Pet();
         pet1.Id = Guid.NewGuid();
         pet1.Description = "Visto por último em: Rua xxx, Bairro xxx";
         pet1.AdType = true;
