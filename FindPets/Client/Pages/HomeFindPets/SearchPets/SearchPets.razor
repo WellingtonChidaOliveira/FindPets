@@ -1,12 +1,102 @@
 ﻿@page "/searchPets"
 @using FindPets.Shared;
+@using Microsoft.Extensions.Logging;
+@inject ILogger<string> Logger;
 
 <PageTitle>Localizar Pet</PageTitle>
 
 <div class="container mt-5">
-    <h1>Animais Anunciados</h1>
+    <div>
+        <EditForm Model="@Searchs" OnValidSubmit="@SubmitSearch" oninvalid="false">
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label for="type">Anúncio</label>
+                    <InputSelect class="form-select" @bind-Value="Searchs.Type">
+                        <option value="" selected>Todos</option>
+                        <option value="true">Encontrados</option>
+                        <option value="false">Desaparecidos</option>
+                    </InputSelect>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="search">Pesquise</label>
+                    <InputText class="form-control" id="search" @bind-Value="Searchs.Search" placeholder="..." />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="status">Status</label>
+                    <InputSelect class="form-select" id="status" @bind-Value="Searchs.Status">
+                    <option value="false" selected>Em Aberto</option>
+                    <option value="true">Finalizados</option>
+                </InputSelect>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end align-self-end">
+                <button class="btn bt-custom-white" style="height: 40px">
+                    Buscar
+                </button>
+            </div>
+                
+         </div>
+        </EditForm>
+       
+   
+    </div>
+    <h4 class="mt-5">Animais</h4>
+    <div class="mt-5">
+        @if (ListPets.Count > 0)
+        {
+            <div class="row">
+                @foreach (var pet in ListPets)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 mb-3 d-flex justify-content-center align-self-center">
+                        <Card Pet="@pet" />
+                    </div>
+                }
+            </div>
+        } else
+        {
+            <p class="text-center">Nenhum registro localizado</p>
+        }
+
+
+
+    </div>
 </div>
 
 @code {
- 
+
+    class SearchPet
+    {
+        public string? Search { get; set; }
+        public bool? Type { get; set; }
+        public bool Status { get; set; }
+        public int? Page { get; set; } = 1;
+        public int? Take { get; set; } = 9;
+    }
+
+    private SearchPet Searchs = new();
+
+    private List<Pet> ListPets = new List<Pet>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Pet pet1 = new Pet();
+        pet1.Id = Guid.NewGuid();
+        pet1.Description = "Visto por último em: Rua xxx, Bairro xxx";
+        pet1.AdType = true;
+        pet1.ImageUrl = "https://th.bing.com/th/id/OIP.gce7cxGw0rKPe9TDdq00ggHaFi?pid=ImgDet&rs=1";
+
+        for (int i = 0; i < 9; i++)
+        {
+            ListPets.Add(pet1);
+        }
+    }
+
+    private void SubmitSearch()
+    {
+        //Exemplo
+        //var request = _PetsService.Get(Searchs);
+       // ListPets = request;
+
+        Logger.LogInformation("" + Searchs.Type);
+    }
+
 }

@@ -3,7 +3,7 @@
 @if(Pet != null)
 {
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="@Pet.ImageUrl" alt="Card image cap">
+        <img class="card-img-top" src="@Pet.ImageUrl" alt="pet">
         <div class="card-body">
             @if(Pet.AdType)
             {
@@ -13,7 +13,7 @@
             {
                 <p class="card-title">Encontrado</p>
             }
-            <p class="card-text">@Pet.Description</p>
+            <p class="card-text text-truncate">@Pet.Description</p>
         </div>
       
         <NavLink href='@("/detailsPet/" + Pet.Id)'>
