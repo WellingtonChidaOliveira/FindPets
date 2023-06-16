@@ -1,5 +1,4 @@
-﻿using FindPets.Server.Services;
-using FindPets.Shared;
+﻿using FindPets.Shared.Pets;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FindPets.Server.Controllers
