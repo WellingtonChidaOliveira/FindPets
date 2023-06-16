@@ -45,7 +45,7 @@
         </div>
 
         <div class="mb-3 mt-3">
-            <button type="submit" class="btn bt-custom-blue" @onclick="@(() => Submit(form))">Cadastrar</button>
+            <button type="submit" class="btn bt-custom-blue" @onclick="@(() => SubmitAndViewList(form))">Cadastrar</button>
             <button type="submit" class="btn bt-custom-white" @onclick="@(() => SubmitAndViewDetail(form))">Cadastrar e visualizar</button>
         </div>
     </EditForm>
@@ -54,12 +54,13 @@
 @code {
     private Pet pet = new Pet();
 
-    private async Task Submit(EditContext form)
+    private async Task SubmitAndViewList(EditContext form)
     {
         // Validar e salvar o pet
         if (form.Validate() && pet.IsValid())
         {
-            await PetServiceClient.AddPet(pet);
+            var petResult = await PetServiceClient.AddPet(pet);
+            Navigation.NavigateTo($"/searchPet/", true);
         }
     }
 
