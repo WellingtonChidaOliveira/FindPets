@@ -1,7 +1,8 @@
 ﻿@page "/searchPets"
 @using FindPets.Shared;
-@using Microsoft.Extensions.Logging;
-@inject ILogger<string> Logger;
+@using FindPets.Shared.Pets;
+
+@inject IPetService PetServiceClient;
 
 <PageTitle>Localizar Pet</PageTitle>
 
@@ -99,4 +100,12 @@
         Logger.LogInformation("" + Searchs.Type);
     }
 
+    private List<Pet> Pets { get; set; } = new List<Pet>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var petsResult = await PetServiceClient.GetAllPets();
+
+        Pets = petsResult.ToList();
+    }
 }

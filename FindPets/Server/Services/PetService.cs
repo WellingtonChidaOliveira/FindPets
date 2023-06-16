@@ -1,5 +1,4 @@
-﻿using FindPets.Server.Repositories;
-using FindPets.Shared;
+﻿using FindPets.Shared.Pets;
 
 namespace FindPets.Server.Services
 {

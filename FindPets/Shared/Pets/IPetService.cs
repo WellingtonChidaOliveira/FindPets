@@ -1,6 +1,4 @@
-﻿using FindPets.Shared;
-
-namespace FindPets.Server.Services
+﻿namespace FindPets.Shared.Pets
 {
     public interface IPetService
     {
