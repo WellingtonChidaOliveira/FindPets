@@ -1,4 +1,5 @@
-﻿using FindPets.Shared;
+﻿using FindPets.Shared.Pets;
+using FindPets.Shared.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace FindPets.Server.Data

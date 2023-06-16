@@ -1,5 +1,8 @@
 ﻿@page "/searchPets"
 @using FindPets.Shared;
+@using FindPets.Shared.Pets;
+
+@inject IPetService PetServiceClient;
 
 <PageTitle>Localizar Pet</PageTitle>
 
@@ -8,5 +11,12 @@
 </div>
 
 @code {
- 
+    private List<Pet> Pets { get; set; } = new List<Pet>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var petsResult = await PetServiceClient.GetAllPets();
+
+        Pets = petsResult.ToList();
+    }
 }

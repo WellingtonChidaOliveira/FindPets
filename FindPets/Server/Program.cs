@@ -1,6 +1,7 @@
 using FindPets.Server.Extensions;
 using FindPets.Server.Repositories;
 using FindPets.Server.Services;
+using FindPets.Shared.Pets;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,6 @@ builder.Services.AddDbServices(builder.Configuration);
 
 // Add dependencies
 
-builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IPetService, PetService>();
 
 var app = builder.Build();

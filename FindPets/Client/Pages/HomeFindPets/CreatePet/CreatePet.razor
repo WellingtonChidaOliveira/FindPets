@@ -1,11 +1,90 @@
 ﻿@page "/createPet"
-<PageTitle>Divulgar Pet</PageTitle>
+@using FindPets.Shared.Pets;
+@inject NavigationManager Navigation;
+@inject IPetService PetServiceClient;
 
+<PageTitle>Divulgar Pet</PageTitle>
 
 <div class="container mt-5">
     <h1>Cadastro de Pet</h1>
+
+    <EditForm Model="@pet" Context="form">
+        <DataAnnotationsValidator/>
+
+        <div class="mb-3">
+            <label class="form-label" for="adType">Tipo de Anúncio</label>
+            <InputSelect id="adType" class="form-select" @bind-Value="pet.AdType">
+                <option value="false">Desaparecido</option>
+                <option value="true">Encontrado</option>
+            </InputSelect>
+            <ValidationMessage For="@(() => pet.AdType)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="description">Descrição</label>
+            <InputTextArea id="description" class="form-control" @bind-Value="pet.Description" />
+            <ValidationMessage For="@(() => pet.Description)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="location">Localização</label>
+            <InputText id="location" class="form-control" @bind-Value="pet.Location" />
+            <ValidationMessage For="@(() => pet.Location)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="phoneNumber">Número de contato</label>
+            <InputText id="phoneNumber" class="form-control" @bind-Value="pet.PhoneNumber" />
+            <ValidationMessage For="@(() => pet.PhoneNumber)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="photo">Foto do animal</label>
+            <InputFile id="photo" class="form-control" type="file" accept="image/*" OnChange="HandlePhotoChange" />
+            <ValidationMessage For="@(() => pet.Photo)" />
+        </div>
+
+        <div class="mb-3 mt-3">
+            <button type="submit" class="btn bt-custom-blue" @onclick="@(() => SubmitAndViewList(form))">Cadastrar</button>
+            <button type="submit" class="btn bt-custom-white" @onclick="@(() => SubmitAndViewDetail(form))">Cadastrar e visualizar</button>
+        </div>
+    </EditForm>
 </div>
 
 @code {
+    private Pet pet = new Pet();
 
+    private async Task SubmitAndViewList(EditContext form)
+    {
+        // Validar e salvar o pet
+        if (form.Validate() && pet.IsValid())
+        {
+            var petResult = await PetServiceClient.AddPet(pet);
+            Navigation.NavigateTo($"/searchPet/", true);
+        }
+    }
+
+    private async Task SubmitAndViewDetail(EditContext form)
+    {
+        // Validar e salvar o pet
+        if (form.Validate() && pet.IsValid())
+        {
+            var petResult = await PetServiceClient.AddPet(pet);
+            Navigation.NavigateTo($"/detailsPet/{petResult.Id}", true);
+        }
+    }
+
+    private async Task HandlePhotoChange(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            // Converter a imagem para byte array
+            using (var stream = new MemoryStream())
+            {
+                await file.OpenReadStream().CopyToAsync(stream);
+                pet.Photo = stream.ToArray();
+            }
+        }
+    }
 }
