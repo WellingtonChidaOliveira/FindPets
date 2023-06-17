@@ -3,24 +3,39 @@
 @if(Pet != null)
 {
     <div class="card" style="width: 18rem;">
+        
         <img class="card-img-top" src="@Pet.ImageUrl" alt="pet">
         <div class="card-body">
             @if(Pet.AdType)
             {
-                <p class="card-title">Desaparecido</p>
+                <span id="found" style="content: 'Você me perdeu?'"></span>
+                <h6 class="card-title text-center fw-bold">Encontrado</h6>
             }
             else
             {
-                <p class="card-title">Encontrado</p>
+                <span id="missing"></span>
+                <h6 class="card-title text-center fw-bold">Desaparecido</h6>
             }
-            <p class="card-text text-truncate">@Pet.Description</p>
+            <p>@Pet.CreatedAt.ToString("dd/MM/yyyy")</p>
+
+            @if (ViewButton)
+            {
+                <p class="card-text text-truncate">@Pet.Description</p>
+            } else
+            {
+                <p class="card-text">@Pet.Description</p>
+            }
+
         </div>
       
-        <NavLink href='@("/detailsPet/" + Pet.Id)'>
-            <button class="btn bt-custom-blue card-body" style="width: 100%">
-                Ver Anúncio
-            </button>
-        </NavLink>
+        @if(ViewButton)
+        {
+            <NavLink href='@("/detailsPet/" + Pet.Id)'>
+                <button class="btn bt-custom-blue card-body" style="width: 100%">
+                    Ver Anúncio
+                </button>
+            </NavLink>
+        }
        
     </div>
 }
@@ -29,4 +44,6 @@
 @code {
     [Parameter]
     public Pet? Pet { get; set; }
+    [Parameter]
+    public bool ViewButton { get; set; } = true;
 }

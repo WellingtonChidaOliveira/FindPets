@@ -1,5 +1,6 @@
 ﻿using FindPets.Shared.Pets;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace FindPets.Server.Controllers
 {
@@ -15,9 +16,9 @@ namespace FindPets.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pet>>> Get()
+        public async Task<ActionResult<IEnumerable<Pet>>> Get(bool type, bool status, string? search, int page, int take )
         {
-            var pets = await _petService.GetAllPets();
+            var pets = await _petService.GetAllPets(new SearchPet(search, type, status, page, take));
 
             return Ok(pets);
         }

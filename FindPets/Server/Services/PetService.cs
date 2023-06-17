@@ -11,9 +11,9 @@ namespace FindPets.Server.Services
             _petRepository = petRepository;
         }
 
-        public async Task<IEnumerable<Pet>> GetAllPets()
+        public async Task<IEnumerable<Pet>> GetAllPets(SearchPet search)
         {
-            return await _petRepository.GetAll();
+            return await _petRepository.GetAll(search);
         }
 
         public async Task<Pet> GetPetById(Guid id)

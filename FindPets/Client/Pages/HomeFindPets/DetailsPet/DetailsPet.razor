@@ -1,12 +1,62 @@
 ﻿@page "/detailsPet/{UrlRequest}"
+@using FindPets.Shared.Pets;
+@inject IPetService PetServiceClient;
 
 <PageTitle>Detalhes do Anúncio</PageTitle>
 
 <div class="container mt-5">
-    <h1>Detalhes Anuncio</h1>
+  
+        @if(Pet.AdType)
+        {
+            <h4> Encontrado </h4>
+        } else
+        {
+           <h4> Desaparecido </h4>
+        }
+    <p style="font-size: 10px">Postado @DatePost()</p>
+
+       <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <Card Pet="Pet" ViewButton="false"/>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                <h5 class="text-uppercase mb-4">Informações do Anúncio</h5>
+
+                <p><span class="fw-bold">Data de cadastro: </span> @Pet.CreatedAt.ToString("dd/MM/yyyy H:mm")</p>
+                <p><span class="fw-bold">Contato: </span> @Pet.PhoneNumber</p>
+
+                <hr />
+
+                <h5 class="text-uppercase mt-2 mb-4">Informações Adicionais</h5>
+
+                <p><span class="fw-bold">Descrição: </span> @Pet.Description</p>
+                <p><span class="fw-bold">Localização: </span> @Pet.Location</p>
+                
+            </div>
+        </div>
+   
 </div>
 
 @code {
+
     [Parameter]
     public string UrlRequest { get; set; }
+  
+    private Pet Pet { get; set; } = new Pet();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var petResult = await PetServiceClient.GetPetById(new Guid(UrlRequest));
+
+        Pet = petResult;
+
+    }
+
+    protected string DatePost()
+    {
+        var date = DateTime.Now;
+        return date.Date == Pet.CreatedAt.Date ? "Hoje" : $" há {(date.Date - Pet.CreatedAt.Date).Days} dia(s)";
+    }
 }
