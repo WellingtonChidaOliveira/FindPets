@@ -1,8 +1,75 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family:  Arial, sans-serif;
+    font-family: Arial, sans-serif;
     height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-footer {
+    background-color: #57B5D3;
+    margin-top: 50vh;
+    display: flex;
+    flex-direction: column
+}
+
+.card span {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card span#missing::before {
+    content: 'Me Viu?';
+    position: absolute;
+    width: 250px;
+    height: 40px;
+    background-color: #57B5D3;
+    transform: rotate(-45deg) translateY(-20px);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Arial;
+
+}
+.card span#found::before {
+    content: 'Me Perdeu?';
+    position: absolute;
+    width: 250px;
+    height: 40px;
+    background-color: #57B5D3;
+    transform: rotate(-45deg) translateY(-20px);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Arial;
+   
+}
+
+.card span::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+    background-color: #57B5D3;
+    z-index: -1;
 }
 
 .bt-custom-white {

@@ -1,4 +1,5 @@
 ﻿@using FindPets.Shared.Pets;
+@inject IPetService PetServiceClient;
 
 
 <div class="container mt-5">
@@ -8,7 +9,7 @@
         <div class="row">
             @foreach (var pet in ListPets)
             {
-                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex mb-3 justify-content-center align-self-center">
                     <Card Pet="@pet" />
                 </div>
             }
@@ -30,15 +31,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Pet pet1 = new Pet();
-        pet1.Id = Guid.NewGuid();
-        pet1.Description = "Visto por último em: Rua xxx, Bairro xxx";
-        pet1.AdType = true;
-        pet1.ImageUrl = "https://th.bing.com/th/id/OIP.gce7cxGw0rKPe9TDdq00ggHaFi?pid=ImgDet&rs=1";
 
-        for (int i = 0; i < 3; i++)
-        {
-            ListPets.Add(pet1);
-        }
+        var pets =  await PetServiceClient.GetAllPets(new SearchPet("", false, false, 1, 3));
+        ListPets = pets.ToList();
+
     }
 }

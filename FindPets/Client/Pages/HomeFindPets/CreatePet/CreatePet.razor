@@ -6,7 +6,7 @@
 <PageTitle>Divulgar Pet</PageTitle>
 
 <div class="container mt-5">
-    <h1>Cadastro de Pet</h1>
+    <h4 class="mb-3 mt-3">Cadastro de Pet</h4>
 
     <EditForm Model="@pet" Context="form">
         <DataAnnotationsValidator/>
@@ -46,7 +46,7 @@
 
         <div class="mb-3 mt-3">
             <button type="submit" class="btn bt-custom-blue" @onclick="@(() => SubmitAndViewList(form))">Cadastrar</button>
-            <button type="submit" class="btn bt-custom-white" @onclick="@(() => SubmitAndViewDetail(form))">Cadastrar e visualizar</button>
+            <button type="submit" class="btn bt-custom-white"  @onclick="@(() => SubmitAndViewDetail(form))">Cadastrar e visualizar</button>
         </div>
     </EditForm>
 </div>
@@ -60,7 +60,7 @@
         if (form.Validate() && pet.IsValid())
         {
             var petResult = await PetServiceClient.AddPet(pet);
-            Navigation.NavigateTo($"/searchPet/", true);
+            Navigation.NavigateTo($"/searchPets/", true);
         }
     }
 
