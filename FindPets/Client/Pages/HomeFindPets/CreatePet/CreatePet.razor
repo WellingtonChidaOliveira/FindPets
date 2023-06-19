@@ -84,6 +84,7 @@
             {
                 await file.OpenReadStream().CopyToAsync(stream);
                 pet.Photo = stream.ToArray();
+                pet.ImageUrl = $"data:{file.ContentType};base64,{Convert.ToBase64String(pet.Photo)}";
             }
         }
     }
