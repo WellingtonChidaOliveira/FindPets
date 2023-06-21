@@ -76,15 +76,24 @@
 
     private async Task HandlePhotoChange(InputFileChangeEventArgs e)
     {
-        var file = e.File;
-        if (file != null)
+        var MaxAllowedSize = 10485760; //tamanho máximo do arquivo: 10mb
+
+        try
         {
-            // Converter a imagem para byte array
-            using (var stream = new MemoryStream())
+            if (e.File != null)
             {
-                await file.OpenReadStream().CopyToAsync(stream);
-                pet.Photo = stream.ToArray();
+                // Converter a imagem para byte array
+                using (var stream = new MemoryStream())
+                {   //informar em OpenReadStream o valor máximo do arquivo, o default é 500kb
+                    await e.File.OpenReadStream(MaxAllowedSize).CopyToAsync(stream);
+                    pet.Photo = stream.ToArray();
+                }
             }
+        }
+        catch (Exception ex)
+        {
+
+            Console.WriteLine("ERROR: " + ex.Message);
         }
     }
 }
