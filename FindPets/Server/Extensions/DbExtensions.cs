@@ -35,6 +35,7 @@ namespace FindPets.Server.Extensions
         private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IPetRepository, PetRepository>();
+            services.AddScoped<IBlobStorageRepository, BlobStorageRepository>();
         }
     }
 }
