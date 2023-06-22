@@ -2,9 +2,9 @@
 {
     public interface IBlobStorageRepository
     {
-        string UploadImage(byte[] image);
-        string UpdateImage(byte[] image, string imgUrl);
-        bool DeleteImage(string imgUrl);
+        string UploadImage(Pet pet);
+        string UpdateImage(Pet pet);
+        bool DeleteImage(Pet pet);
         
     }
 }

@@ -34,7 +34,7 @@ namespace FindPets.Server.Services
         public async Task<Pet> AddPet(Pet pet)
         {
             if(!pet.Photo.IsNullOrEmpty())
-                pet.ImageUrl = _blobStorageRepository.UploadImage(pet.Photo);
+                pet.ImageUrl = _blobStorageRepository.UploadImage(pet);
             
             return await _petRepository.AddAsync(pet);
         }
@@ -42,7 +42,7 @@ namespace FindPets.Server.Services
         public async Task<Pet> UpdatePet(Pet pet)
         {
             if (!pet.Photo.IsNullOrEmpty())
-                pet.ImageUrl = _blobStorageRepository.UpdateImage(pet.Photo,pet.ImageUrl);
+                pet.ImageUrl = _blobStorageRepository.UpdateImage(pet);
 
             return await _petRepository.UpdateAsync(pet);
         }

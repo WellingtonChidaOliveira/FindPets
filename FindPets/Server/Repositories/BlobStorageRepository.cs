@@ -18,12 +18,13 @@ namespace FindPets.Server.Repositories
             _storageContainerName = configuration.GetValue<string>("Azure:BlobContainerName");
         }
 
-
-        public bool DeleteImage(string imgUrl)
+        public bool DeleteImage(Pet pet)
         {
             BlobContainerClient blobContainer = new BlobContainerClient(_storageConnectionString, _storageContainerName);
 
-            BlobClient blobClient = blobContainer.GetBlobClient(imgUrl);
+            string blobId = pet.ImageUrl.Split("/").LastOrDefault();
+
+            BlobClient blobClient = blobContainer.GetBlobClient(blobId);
             try
             {
                 blobClient.Delete();
@@ -36,17 +37,17 @@ namespace FindPets.Server.Repositories
             }
         }
 
-        public string UpdateImage(byte[] image, string imgUrl)
+        public string UpdateImage(Pet pet)
         {
             BlobContainerClient blobContainer = new BlobContainerClient(_storageConnectionString, _storageContainerName);
 
-            string blobId = imgUrl.Split(".").LastOrDefault();
+            string blobId = pet.ImageUrl.Split("/").LastOrDefault();
 
             BlobClient blobClient = blobContainer.GetBlobClient(blobId);
             try
             {
                 blobClient.Delete();
-             return UploadImage(image);
+                return UploadImage(pet);
                 
             }
             catch (RequestFailedException ex)
@@ -56,15 +57,15 @@ namespace FindPets.Server.Repositories
 
         }
 
-        public string UploadImage(byte[] image)
+        public string UploadImage(Pet pet)
         {
-            if (image.IsNullOrEmpty())
+            if (pet.Photo.IsNullOrEmpty())
                 return string.Empty;
 
-            var fileName = Guid.NewGuid().ToString();
+            var fileName = Guid.NewGuid().ToString() + "." + pet.PhotoExtension;
             var blobClient = new BlobClient(_storageConnectionString, _storageContainerName, fileName);
 
-            using (var stream = new MemoryStream(image))
+            using (var stream = new MemoryStream(pet.Photo))
             {
 
                 blobClient.Upload(stream);

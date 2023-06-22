@@ -84,7 +84,10 @@
             {
                 // Converter a imagem para byte array
                 using (var stream = new MemoryStream())
-                {   //informar em OpenReadStream o valor máximo do arquivo, o default é 500kb
+                {
+                    pet.PhotoExtension = e.File.Name.Split(".").LastOrDefault();
+
+                    //informar em OpenReadStream o valor máximo do arquivo, o default é 500kb
                     await e.File.OpenReadStream(MaxAllowedSize).CopyToAsync(stream);
                     pet.Photo = stream.ToArray();
                 }

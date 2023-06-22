@@ -1,5 +1,6 @@
 ﻿using FindPets.Shared.ClassBase;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FindPets.Shared.Pets
 {
@@ -9,6 +10,8 @@ namespace FindPets.Shared.Pets
         [Required(ErrorMessage = "Campo obrigatório.")]
         public bool AdType { get; set; } = false;
         public byte[]? Photo { get; set; }
+        [NotMapped]
+        public string PhotoExtension { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         [Required(ErrorMessage = "Campo obrigatório.")]
         public string Description { get; set; } = string.Empty;
