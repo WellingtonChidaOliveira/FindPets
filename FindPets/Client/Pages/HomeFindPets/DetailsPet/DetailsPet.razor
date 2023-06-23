@@ -13,14 +13,14 @@
         {
            <h4> Desaparecido </h4>
         }
-    <p style="font-size: 10px">Postado @DatePost()</p>
+    <p style="font-size: 10px" class="mb-2">Postado @DatePost()</p>
 
        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-2">
                 <Card Pet="Pet" ViewButton="false"/>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <h5 class="text-uppercase mb-4">Informações do Anúncio</h5>
 
                 <p><span class="fw-bold">Data de cadastro: </span> @Pet.CreatedAt.ToString("dd/MM/yyyy H:mm")</p>

@@ -10,12 +10,12 @@ namespace FindPets.Shared.Pets
     {
 
         public string Search { get; set; } = string.Empty;
-        public bool Type { get; set; }
+        public bool? Type { get; set; }
         public bool Status { get; set; }
         public int Page { get; set; } = 1;
-        public int Take { get; set; } = 5;
+        public int Take { get; set; } = 9;
 
-        public SearchPet(string search, bool type, bool status, int page, int take)
+        public SearchPet(string search, bool? type, bool status, int page, int take)
         {
             Search = search;
             Type = type;

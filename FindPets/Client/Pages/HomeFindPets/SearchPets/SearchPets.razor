@@ -14,8 +14,9 @@
             <div class="form-group col-md-3">
               <label for="type">Tipo de Anúncio</label>
                     <InputSelect class="form-select" @bind-Value="Searchs.Type">
+                        <option value="">Todos</option>
                         <option value="true">Encontrados</option>
-                        <option value="false" selected>Desaparecidos</option>
+                        <option value="false">Desaparecidos</option>
                     </InputSelect>
             </div>
             <div class="form-group col-md-3">
@@ -27,7 +28,7 @@
             </div>
             <div class="form-group col-md-3">
               <label for="search">Pesquise</label>
-                    <InputText class="form-control" id="search" @bind-Value="Searchs.Search" placeholder="..." />
+                    <InputText class="form-control mb-1" id="search" @bind-Value="Searchs.Search" placeholder="..." />
             </div>
             <div class="col-md-3 d-flex justify-content-end align-self-end">
                     <button class="btn bt-custom-white" style="height: 40px" @onclick="(() => SubmitSearch(Searchs.Page))">
@@ -56,12 +57,12 @@
 
             <div class="row mt-5">
 
-                <div class="col-lg-1 col-md-1 col-sm-1 col-1 offset-5 mb-3 d-flex justify-content-center align-self-center">
+                <div class="col-lg-1 col-md-1 col-sm-4 col-4 offset-md-5 offset-sm-0 mb-3 d-flex justify-content-center align-self-center">
                     <button @onclick="(() => SubmitSearch(Searchs.Page - 1))" disabled="@disabledButtonBefore" class="btn bt-custom-blue">
                         <span class="oi oi-chevron-left"></span>
                     </button>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-1 mb-3 d-flex justify-content-center align-self-center">
+                <div class="col-lg-1 col-md-1 col-sm-4 col-4 mb-3 d-flex justify-content-center align-self-center">
                     <button @onclick="(() => SubmitSearch(Searchs.Page + 1))" disabled="@disabledButtonNext" class="col-6 btn bt-custom-blue">
                         <span class="oi oi-chevron-right"></span>
                     </button>
@@ -78,7 +79,7 @@
 @code {
 
 
-    private SearchPet Searchs = new();
+    private SearchPet Searchs = new SearchPet("", false, false, 1, 9);
 
     private List<Pet> ListPets = new List<Pet>();
 

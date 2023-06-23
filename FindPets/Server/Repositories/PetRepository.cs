@@ -17,14 +17,14 @@ namespace FindPets.Server.Repositories
 
         public async Task<IEnumerable<Pet>> GetAll(SearchPet search)
         {
-            var skip = search.Page == 1 ? search.Page - 1 : (search.Page - 1) * search.Take;
+            var skip = (search.Page - 1) * search.Take;
 
             if (search.Search == null)
                 search.Search = "";
 
             var pets = await _context.Pets.Where(pet => pet.Status == search.Status &&
                                                    pet.Description.Contains(search.Search)
-                                                   && pet.AdType == search.Type).OrderByDescending(pet => pet.CreatedAt)
+                                                   && (search.Type != null ? pet.AdType == search.Type: true)).OrderByDescending(pet => pet.CreatedAt)
                                                    .Skip(skip).Take(search.Take).ToListAsync();
 
             return pets;
