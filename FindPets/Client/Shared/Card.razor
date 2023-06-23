@@ -1,34 +1,43 @@
 ﻿@using FindPets.Shared.Pets;
+@using FindPets.Shared.Enum
 
-@if(Pet != null)
+@if (Pet != null)
 {
     <div class="card" style="width: 18rem;">
-        
+
         <img class="card-img-top" src="@Pet.ImageUrl" alt="pet">
         <div class="card-body">
-            @if(Pet.AdType)
+            @switch (Pet.AdType)
             {
-                <span id="found" style="content: 'Você me perdeu?'"></span>
-                <h6 class="card-title text-center fw-bold">Encontrado</h6>
+                case EnumTypeSearch.Todos:
+                    <span id="found" style="content: 'Você me perdeu?'"></span>
+                    <h6 class="card-title text-center fw-bold">Todos</h6>
+                    break;
+                case EnumTypeSearch.Desaparecido:
+                    <span id="missing"></span>
+                    <h6 class="card-title text-center fw-bold">Desaparecido</h6>
+                    break;
+                case EnumTypeSearch.Encontrado:
+                    <span id="found" style="content: 'Você me perdeu?'"></span>
+                    <h6 class="card-title text-center fw-bold">Encontrado</h6>
+                    break;
             }
-            else
-            {
-                <span id="missing"></span>
-                <h6 class="card-title text-center fw-bold">Desaparecido</h6>
-            }
+
+
             <p>@Pet.CreatedAt.ToString("dd/MM/yyyy")</p>
 
             @if (ViewButton)
             {
                 <p class="card-text text-truncate">@Pet.Description</p>
-            } else
+            }
+            else
             {
                 <p class="card-text">@Pet.Description</p>
             }
 
         </div>
-      
-        @if(ViewButton)
+
+        @if (ViewButton)
         {
             <NavLink href='@("/detailsPet/" + Pet.Id)'>
                 <button class="btn bt-custom-blue card-body" style="width: 100%">
@@ -36,14 +45,17 @@
                 </button>
             </NavLink>
         }
-       
+
     </div>
 }
 
 
 @code {
+
     [Parameter]
     public Pet? Pet { get; set; }
+
     [Parameter]
     public bool ViewButton { get; set; } = true;
+
 }

@@ -1,5 +1,6 @@
 ﻿@page "/searchPets"
 @using FindPets.Shared;
+@using FindPets.Shared.Enum
 @using FindPets.Shared.Pets;
 
 @inject IPetService PetServiceClient;
@@ -13,10 +14,13 @@
           <div class="row">
             <div class="form-group col-md-3">
               <label for="type">Tipo de Anúncio</label>
-                    <InputSelect class="form-select" @bind-Value="Searchs.Type">
-                        <option value="true">Encontrados</option>
-                        <option value="false" selected>Desaparecidos</option>
-                    </InputSelect>
+                <InputSelect class="form-select" @bind-Value="Searchs.Type">
+                    @foreach (var item in Enum.GetValues(typeof(EnumTypeSearch)))
+                    {
+                        <option value="@item">@item.ToString()</option>
+                    }
+                    
+                </InputSelect>
             </div>
             <div class="form-group col-md-3">
                 <label for="status">Status</label>
@@ -90,8 +94,7 @@
         await SubmitSearch();
 
     }
-
-
+    
     private async Task SubmitSearch(int? page = 1)
     {
 

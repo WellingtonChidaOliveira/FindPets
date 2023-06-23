@@ -1,5 +1,6 @@
 ﻿@page "/createPet"
 @using FindPets.Shared.Pets;
+@using FindPets.Shared.Enum
 @inject NavigationManager Navigation;
 @inject IPetService PetServiceClient;
 
@@ -14,8 +15,8 @@
         <div class="mb-3">
             <label class="form-label" for="adType">Tipo de Anúncio</label>
             <InputSelect id="adType" class="form-select" @bind-Value="pet.AdType">
-                <option value="false">Desaparecido</option>
-                <option value="true">Encontrado</option>
+                <option value="@EnumTypeSearch.Desaparecido">Desaparecido</option>
+                <option value="@EnumTypeSearch.Encontrado">Encontrado</option>
             </InputSelect>
             <ValidationMessage For="@(() => pet.AdType)" />
         </div>

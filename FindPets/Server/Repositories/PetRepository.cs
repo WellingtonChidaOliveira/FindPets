@@ -1,8 +1,7 @@
 ﻿using FindPets.Server.Data;
+using FindPets.Server.Utils;
 using FindPets.Shared.Pets;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System.Drawing;
 
 namespace FindPets.Server.Repositories
 {
@@ -14,19 +13,20 @@ namespace FindPets.Server.Repositories
         {
             _context = context;
         }
-
-        public async Task<IEnumerable<Pet>> GetAll(SearchPet search)
+        
+        public async Task<List<Pet>> GetAll(SearchPet search)
         {
             var skip = search.Page == 1 ? search.Page - 1 : (search.Page - 1) * search.Take;
 
-            if (search.Search == null)
+            if (search.Search is null)
                 search.Search = "";
-
-            var pets = await _context.Pets.Where(pet => pet.Status == search.Status &&
-                                                   pet.Description.Contains(search.Search)
-                                                   && pet.AdType == search.Type).OrderByDescending(pet => pet.CreatedAt)
-                                                   .Skip(skip).Take(search.Take).ToListAsync();
-
+            var filterQuery = FilterQuery.FiltersPet(_context.Pets, search);
+            
+            var pets = await filterQuery
+                .OrderByDescending(pet => pet.CreatedAt)
+                .Skip(skip)
+                .Take(search.Take)
+                .ToListAsync();
             return pets;
         }
 

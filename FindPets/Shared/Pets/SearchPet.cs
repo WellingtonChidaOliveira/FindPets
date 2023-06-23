@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FindPets.Shared.Enum;
 
 namespace FindPets.Shared.Pets
 {
     public class SearchPet
     {
-
         public string Search { get; set; } = string.Empty;
-        public bool Type { get; set; }
+        public EnumTypeSearch Type { get; set; } = EnumTypeSearch.Todos;
         public bool Status { get; set; }
         public int Page { get; set; } = 1;
         public int Take { get; set; } = 5;
 
-        public SearchPet(string search, bool type, bool status, int page, int take)
+        public SearchPet(string search, EnumTypeSearch type, bool status, int page, int take)
         {
             Search = search;
-            Type = type;
+            Type =  type;
             Status = status;
             Page = page;
             Take = take;
@@ -26,9 +26,6 @@ namespace FindPets.Shared.Pets
 
         public SearchPet()
         {
-    
         }
-
-       
     }
 }
