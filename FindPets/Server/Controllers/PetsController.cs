@@ -16,7 +16,7 @@ namespace FindPets.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pet>>> Get(bool type, bool status, string? search, int page, int take )
+        public async Task<ActionResult<IEnumerable<Pet>>> Get(bool? type, bool status, string? search, int page, int take )
         {
             var pets = await _petService.GetAllPets(new SearchPet(search, type, status, page, take));
 
