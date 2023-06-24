@@ -9,7 +9,7 @@ namespace FindPets.Shared.Pets
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required(ErrorMessage = "Campo obrigatório.")]
-        public EnumTypeSearch AdType { get; set; } = EnumTypeSearch.Todos;
+        public EnumTypeSearch AdType { get; set; }
         public byte[]? Photo { get; set; }
         [NotMapped]
         public string PhotoExtension { get; set; } = string.Empty;
