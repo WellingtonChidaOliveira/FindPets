@@ -11,11 +11,14 @@ namespace FindPets.Shared.Pets
     {
         public string Search { get; set; } = string.Empty;
         public EnumTypeSearch Type { get; set; } = EnumTypeSearch.Todos;
+
         public bool Status { get; set; }
         public int Page { get; set; } = 1;
-        public int Take { get; set; } = 5;
+        public int Take { get; set; } = 9;
+
 
         public SearchPet(string search, EnumTypeSearch type, bool status, int page, int take)
+
         {
             Search = search;
             Type =  type;

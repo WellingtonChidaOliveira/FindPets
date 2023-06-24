@@ -16,7 +16,7 @@ namespace FindPets.Server.Repositories
         
         public async Task<List<Pet>> GetAll(SearchPet search)
         {
-            var skip = search.Page == 1 ? search.Page - 1 : (search.Page - 1) * search.Take;
+            var skip = (search.Page - 1) * search.Take;
 
             if (search.Search is null)
                 search.Search = "";
@@ -27,6 +27,7 @@ namespace FindPets.Server.Repositories
                 .Skip(skip)
                 .Take(search.Take)
                 .ToListAsync();
+
             return pets;
         }
 
