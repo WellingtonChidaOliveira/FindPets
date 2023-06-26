@@ -2,7 +2,7 @@
 {
     public interface IPetRepository
     {
-        Task<IEnumerable<Pet>> GetAll(SearchPet search);
+        Task<List<Pet>> GetAll(SearchPet search);
         Task<Pet> GetByIdAsync(Guid id);
         Task<Pet> AddAsync(Pet pet);
         Task<Pet> UpdateAsync(Pet pet);

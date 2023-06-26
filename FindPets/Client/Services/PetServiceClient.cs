@@ -12,9 +12,9 @@ namespace FindPets.Client.Services
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Pet>> GetAllPets(SearchPet searchPet)
+        public async Task<List<Pet>> GetAllPets(SearchPet searchPet)
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<Pet>>($"api/pets?type={searchPet.Type}&status={searchPet.Status}&search={searchPet.Search}&page={searchPet.Page}&take={searchPet.Take}");
+            return await _httpClient.GetFromJsonAsync<List<Pet>>($"api/pets?type={searchPet.Type}&status={searchPet.Status}&search={searchPet.Search}&page={searchPet.Page}&take={searchPet.Take}");
         }
 
         public async Task<Pet> GetPetById(Guid id)

@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using FindPets.Server.Repositories;
+using FindPets.Shared.Enum;
 using FindPets.Shared.Pets;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.Extensions.Configuration;
@@ -12,16 +13,14 @@ namespace FindPets.Server.Services
         private readonly IPetRepository _petRepository;
         private readonly IBlobStorageRepository _blobStorageRepository;
 
-      
 
         public PetService(IPetRepository petRepository, IBlobStorageRepository blobStorageRepository)
         {
             _petRepository = petRepository;
             _blobStorageRepository = blobStorageRepository;
-           
         }
 
-        public async Task<IEnumerable<Pet>> GetAllPets(SearchPet search)
+        public async Task<List<Pet>> GetAllPets(SearchPet search)
         {
             return await _petRepository.GetAll(search);
         }
@@ -33,9 +32,9 @@ namespace FindPets.Server.Services
 
         public async Task<Pet> AddPet(Pet pet)
         {
-            if(!pet.Photo.IsNullOrEmpty())
+            if (!pet.Photo.IsNullOrEmpty())
                 pet.ImageUrl = _blobStorageRepository.UploadImage(pet);
-            
+
             return await _petRepository.AddAsync(pet);
         }
 
@@ -49,7 +48,6 @@ namespace FindPets.Server.Services
 
         public async Task<bool> DeletePet(Guid id)
         {
-
             return await _petRepository.DeleteByIdAsync(id);
         }
     }

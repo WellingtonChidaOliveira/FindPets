@@ -1,4 +1,5 @@
 ﻿@using FindPets.Shared.Pets;
+@using FindPets.Shared.Enum
 @inject IPetService PetServiceClient;
 
 
@@ -32,7 +33,8 @@
     protected override async Task OnInitializedAsync()
     {
 
-        var pets =  await PetServiceClient.GetAllPets(new SearchPet("", null, false, 1, 3));
+        var pets =  await PetServiceClient.GetAllPets(new SearchPet("", EnumTypeSearch.Todos,false, 1, 3));
+
         ListPets = pets.ToList();
 
     }

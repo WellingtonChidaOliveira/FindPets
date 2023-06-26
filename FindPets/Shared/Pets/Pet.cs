@@ -1,6 +1,7 @@
 ﻿using FindPets.Shared.ClassBase;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using FindPets.Shared.Enum;
 
 namespace FindPets.Shared.Pets
 {
@@ -8,7 +9,7 @@ namespace FindPets.Shared.Pets
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required(ErrorMessage = "Campo obrigatório.")]
-        public bool AdType { get; set; } = false;
+        public EnumTypeSearch AdType { get; set; }
         public byte[]? Photo { get; set; }
         [NotMapped]
         public string PhotoExtension { get; set; } = string.Empty;
