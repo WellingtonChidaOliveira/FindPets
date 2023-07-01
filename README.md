@@ -35,7 +35,17 @@ Para executar a aplicação FindPets localmente, siga as etapas abaixo:
 3. Certifique-se de ter as dependências necessárias instaladas, como o SDK do .NET 7.
 4. Ajuste as conexões necessárias no arquivo `appsettings.json` dentro do projeto `FindPets.Server`.
 5. Execute o projeto `FindPets.Server` para iniciar a API RESTful no servidor.
+
+    O swagger da api pode ser visualizado ao inserir `/swagger` na url iniciada ao executar o projeto, exemplo https://localhost:7289/swagger/. Segue imagem:
+
+    ![rg](.github/swagger.png?style=flat)
+
 6. Acesse o projeto `FindPets.Client` no navegador para utilizar a aplicação.
+
+    Ao iniciar o projeto é possível visualizar a aplicação em execução, url de acesso https://localhost:7289/. Segue imagem:
+
+    ![rg](.github/client.png?style=flat)
+ 
 
 ## Implantação na Azure
 
