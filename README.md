@@ -51,6 +51,11 @@ Para implantar a aplicação FindPets na plataforma Azure, siga as etapas abaixo
 
 Com a implantação concluída, a aplicação FindPets estará disponível online na Azure, permitindo o acesso e utilização por parte dos usuários.
 
+Exemplo da estrutura:
+
+![rg](.github/appSettings.png?style=flat)
+![appsettings](.github/appSettings.png?style=flat)
+
 ## Conclusão
 
 O projeto FindPets, com sua arquitetura Blazor WebAssembly Core Hosted, possibilita o desenvolvimento de aplicações web modernas e interativas utilizando C# e .NET tanto no lado do cliente quanto no lado do servidor. A divisão em projetos facilita a organização do código e permite a reutilização de componentes e estruturas de dados compartilhadas.
