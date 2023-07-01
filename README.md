@@ -53,7 +53,7 @@ Com a implantação concluída, a aplicação FindPets estará disponível onlin
 
 Exemplo da estrutura:
 
-![rg](.github/appSettings.png?style=flat)
+![rg](.github/resourceGroup.png?style=flat)
 ![appsettings](.github/appSettings.png?style=flat)
 
 ## Conclusão
